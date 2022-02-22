@@ -16,6 +16,8 @@ public class CustomProducer {
     // k与v的序列化器
     properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
     properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+    // 使用自定义分区器
+    properties.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, "com.ggggght.kafka.MyPartitioner");
     // 1. 创建kafka生产者对象
     var producer = new KafkaProducer<String, String>(properties);
     // 2. 发送数据
